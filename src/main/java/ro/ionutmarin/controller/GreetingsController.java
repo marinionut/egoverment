@@ -4,10 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import ro.ionutmarin.model.Greetings;
 import ro.ionutmarin.service.GreetingsService;
 import ro.ionutmarin.util.XmlConverter;
@@ -17,8 +14,8 @@ import java.util.concurrent.atomic.AtomicLong;
 /**
  * Created by ionut on 10/21/2017.
  */
-@Controller
 @RequestMapping("/greetings")
+@RestController
 public class GreetingsController {
     @Autowired
     GreetingsService greetingsService;
