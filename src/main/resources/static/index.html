@@ -19,7 +19,16 @@
   <script type="text/javascript" src="src/components/angular-ui-router/release/angular-ui-router.min.js"></script>
   <!-- endbuild -->
   <!-- Custom Scripts -->
-  <script type="text/javascript" src="src/components/js/dashboard.min.js"></script>
+  <!--<script type="text/javascript" src="src/components/js/dashboard.min.js"></script>-->
+  <script src="src/js/module.js"></script>
+  <script src="src/js/routes.js"></script>
+  <script src="src/js/controllers/alert-ctrl.js"></script>
+  <script src="src/js/controllers/master-ctrl.js"></script>
+  <script src="src/js/directives/loading.js"></script>
+  <script src="src/js/directives/widget.js"></script>
+  <script src="src/js/directives/widget-body.js"></script>
+  <script src="src/js/directives/widget-footer.js"></script>
+  <script src="src/js/directives/widget-header.js"></script>
 </head>
 <body ng-controller="MasterCtrl">
   <div id="page-wrapper" ng-class="{'open': toggle}" ng-cloak>
