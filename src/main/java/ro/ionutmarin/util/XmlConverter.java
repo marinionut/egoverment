@@ -1,6 +1,7 @@
 package ro.ionutmarin.util;
 
 
+import ro.ionutmarin.entity.FormularEntity;
 import ro.ionutmarin.entity.GreetingsEntity;
 import ro.ionutmarin.model.Greetings;
 import sun.security.util.SecurityConstants;
@@ -17,12 +18,12 @@ import java.sql.Timestamp;
  * Created by ionut on 10/22/2017.
  */
 public class XmlConverter {
-    public static void modelToXml(GreetingsEntity greetingsEntity, String timestamp) {
-        String xmlFileName = "greetings_" + timestamp + ".xml";
+    public static void modelToXml(FormularEntity formularEntity, String timestamp) {
+        String xmlFileName = "formular_" + timestamp + ".xml";
 
         try {
 
-            File file = new File("C:\\Users\\ionut\\Desktop\\" + xmlFileName);
+            File file = new File("C:\\Users\\ionut\\Desktop\\egoverment\\xml\\" + xmlFileName);
 
             JAXBContext jaxbContext = JAXBContext.newInstance(GreetingsEntity.class);
             Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
@@ -30,8 +31,8 @@ public class XmlConverter {
             // output pretty printed
             jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
-            jaxbMarshaller.marshal(greetingsEntity, file);
-            jaxbMarshaller.marshal(greetingsEntity, System.out);
+            jaxbMarshaller.marshal(formularEntity, file);
+            jaxbMarshaller.marshal(formularEntity, System.out);
 
         } catch (JAXBException e) {
             e.printStackTrace();
