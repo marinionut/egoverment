@@ -1,7 +1,11 @@
 package ro.ionutmarin.util;
 
+import antlr.StringUtils;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.AcroFields;
+import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfReader;
 import com.itextpdf.text.pdf.PdfStamper;
 import ro.ionutmarin.entity.FormularEntity;
@@ -15,13 +19,29 @@ import java.util.Calendar;
 /**
  * Created by ionut on 10/22/2017.
  */
+
 public class PdfGenerator {
-    public static String manipulatePdf(FormularEntity formularEntity, String timestamp)  {
+
+    public static String removeDiactritics(String s) {
+        String newString = s.replace('')
+    }
+
+    public static String manipulatePdf(FormularEntity formularEntity, String timestamp) {
         String pdfTemplatePath = "C:\\Users\\ionut\\Desktop\\egoverment\\formular.pdf";
         PdfReader reader = null;
         PdfStamper stamper = null;
         String outputPdfAbsolutePath = "C:\\Users\\ionut\\Desktop\\egoverment\\pdf\\formular_" + timestamp + ".pdf";
         String pdfName = "formular_" + timestamp + ".pdf";
+
+        BaseFont times = null;
+        try {
+            times = BaseFont.createFont(BaseFont.TIMES_ROMAN, BaseFont.CP1257, BaseFont.EMBEDDED);
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Font font = new Font(times, 12, Font.BOLD);
         try {
             reader = new PdfReader(pdfTemplatePath);
             stamper = new PdfStamper(reader,
@@ -34,15 +54,15 @@ public class PdfGenerator {
             fields.setField("initialaTata", formularEntity.getInitialaTata());
             fields.setField("cnp", formularEntity.getCnp());
             fields.setField("adresa", formularEntity.getAdresa());
-            fields.setField("judet", formularEntity.getJudet());
-            fields.setField("localitate", formularEntity.getLocalitate());
+            fields.setField("judet", new Paragraph(formularEntity.getJudet(), font).toString());
+
+            fields.setField("localitate", formularEntity.getLocalitate().replace(a,a));
             fields.setField("telefon", formularEntity.getTelefon());
             fields.setField("beneficiar", formularEntity.getBeneficiar());
             fields.setField("codIdentificare", formularEntity.getCodIdentificare());
             fields.setField("cont", formularEntity.getCont());
             fields.setField("sumaTotala", String.valueOf(formularEntity.getSumaTotala()));
             fields.setField("data", new SimpleDateFormat("dd.MM.yyyy").format(Calendar.getInstance().getTime()).toString());
-
 
 
             stamper.setFormFlattening(true);
