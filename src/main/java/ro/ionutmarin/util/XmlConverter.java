@@ -3,6 +3,7 @@ package ro.ionutmarin.util;
 
 import ro.ionutmarin.entity.FormularEntity;
 import ro.ionutmarin.entity.GreetingsEntity;
+import ro.ionutmarin.model.Formular;
 import ro.ionutmarin.model.Greetings;
 import sun.security.util.SecurityConstants;
 
@@ -25,7 +26,7 @@ public class XmlConverter {
 
             File file = new File("C:\\Users\\ionut\\Desktop\\egoverment\\xml\\" + xmlFileName);
 
-            JAXBContext jaxbContext = JAXBContext.newInstance(GreetingsEntity.class);
+            JAXBContext jaxbContext = JAXBContext.newInstance(FormularEntity.class);
             Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 
             // output pretty printed

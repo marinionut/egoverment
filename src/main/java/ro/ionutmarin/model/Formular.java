@@ -17,6 +17,7 @@ public class Formular {
     String telefon;
     String email;
     Integer tipVenit;
+    String beneficiar;
     String codIdentificare;
     String cont;
     Double salariuBrut;
@@ -100,6 +101,14 @@ public class Formular {
 
     public void setTipVenit(Integer tipVenit) {
         this.tipVenit = tipVenit;
+    }
+
+    public String getBeneficiar() {
+        return beneficiar;
+    }
+
+    public void setBeneficiar(String beneficiar) {
+        this.beneficiar = beneficiar;
     }
 
     public String getCodIdentificare() {

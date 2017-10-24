@@ -26,11 +26,12 @@ public class FormularServiceImpl implements FormularService {
         FormularEntity formularEntity = new FormularEntity();
         formularEntity.setNume(formular.getNume());
         formularEntity.setPrenume(formular.getPrenume());
-        formular.setInitialaTata(formular.getInitialaTata());
+        formularEntity.setInitialaTata(formular.getInitialaTata());
         formularEntity.setCnp(formular.getCnp());
         formularEntity.setSumaTotala(formular.getSumaTotala());
         formularEntity.setSalariuBrut(formular.getSalariuBrut());
         formularEntity.setAdresa(formular.getAdresa());
+        formularEntity.setBeneficiar(formular.getBeneficiar());
         formularEntity.setCodIdentificare(formular.getCodIdentificare());
         formularEntity.setCont(formular.getCont());
         formularEntity.setEmail(formular.getEmail());

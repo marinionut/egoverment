@@ -45,7 +45,11 @@ public class FormularEntity {
     String email;
 
     @Column(name = "tipVenit")
+    @Enumerated(EnumType.STRING)
     TipVenit tipVenit;
+
+    @Column(name = "beneficiar")
+    String beneficiar;
 
     @Column(name = "codIdentificare")
     String codIdentificare;
@@ -145,6 +149,14 @@ public class FormularEntity {
 
     public void setTipVenit(TipVenit tipVenit) {
         this.tipVenit = tipVenit;
+    }
+
+    public String getBeneficiar() {
+        return beneficiar;
+    }
+
+    public void setBeneficiar(String beneficiar) {
+        this.beneficiar = beneficiar;
     }
 
     public String getCodIdentificare() {

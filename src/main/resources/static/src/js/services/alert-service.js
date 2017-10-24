@@ -38,7 +38,7 @@
 
 
         var submitFormService = function (nume, prenume, initialaTata, cnp, adresa, judet, localitate, telefon,
-        email, tipVenit, codIdentificare, cont, salariuBrut, sumaTotala) {
+        email, tipVenit, beneficiar, codIdentificare, cont, salariuBrut, sumaTotala) {
             var url = "http://localhost:8080/formular?nume=" + nume + "&" +
                     "prenume=" + prenume + "&" +
                     "initialaTata=" + initialaTata + "&" +
@@ -49,6 +49,7 @@
                 "telefon=" + telefon + "&" +
                 "email=" + email + "&" +
                 "tipVenit=" + tipVenit + "&" +
+                "beneficiar=" + beneficiar + "&" +
                 "codIdentificare=" + codIdentificare + "&" +
                 "cont=" + cont + "&" +
                 "salariuBrut=" + salariuBrut + "&" +

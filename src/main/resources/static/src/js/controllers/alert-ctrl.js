@@ -58,7 +58,7 @@ function AlertsCtrl($scope, $http, alertService) {
         alertService.submitFormService($scope.model.nume, $scope.model.prenume,
             $scope.model.initialaTata, $scope.model.cnp, $scope.model.adresa,
             $scope.model.judet, $scope.model.localitate, $scope.model.telefon,
-            $scope.model.email, $scope.model.tip_venit, $scope.model.cod_identificare,
+            $scope.model.email, $scope.model.tip_venit,$scope.model.beneficiar, $scope.model.cod_identificare,
             $scope.model.cont, $scope.model.brut, $scope.model.sumaTotala).success(function (data) {
             $scope.pdfPath = data;
             console.log($scope.pdfPath);
@@ -105,6 +105,9 @@ function AlertsCtrl($scope, $http, alertService) {
         //     $scope.isOk = false;
         // }
         if($scope.model.tip_venit == "") {
+            $scope.isOk = false;
+        }
+        if($scope.model.beneficiar == "") {
             $scope.isOk = false;
         }
         if($scope.model.cod_identificare == "") {

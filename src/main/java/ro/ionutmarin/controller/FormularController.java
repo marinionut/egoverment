@@ -1,7 +1,9 @@
 package ro.ionutmarin.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ro.ionutmarin.model.Formular;
 import ro.ionutmarin.model.Greetings;
@@ -9,6 +11,8 @@ import ro.ionutmarin.model.TipVenit;
 import ro.ionutmarin.service.FormularService;
 import ro.ionutmarin.util.PdfKeeper;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
@@ -34,6 +38,7 @@ public class FormularController {
                        @RequestParam(value="telefon", required=false) String telefon,
                        @RequestParam(value="email", required=false) String email,
                        @RequestParam(value="tipVenit", required=false) Integer tipVenit,
+                       @RequestParam(value="beneficiar", required=false) String beneficiar,
                        @RequestParam(value="codIdentificare", required=false) String codIdentificare,
                        @RequestParam(value="cont", required=false) String cont,
                        @RequestParam(value="salariuBrut", required=false) Double salariuBrut,
@@ -50,6 +55,7 @@ public class FormularController {
         formular.setTelefon(telefon);
         formular.setEmail(email);
         formular.setTipVenit(tipVenit);
+        formular.setBeneficiar(beneficiar);
         formular.setCodIdentificare(codIdentificare);
         formular.setCont(cont);
         formular.setSalariuBrut(salariuBrut);
@@ -70,5 +76,6 @@ public class FormularController {
     PdfKeeper getPdfPath() {
         return pdfKeeper;
     }
+
 }
 
