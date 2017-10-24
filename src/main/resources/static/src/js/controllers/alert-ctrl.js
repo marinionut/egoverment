@@ -74,8 +74,9 @@ function AlertsCtrl($scope, $http, alertService) {
     };
 
     $scope.submit = function() {
+        $scope.warningList = [];
         $scope.isOk = true;
-        //$scope.validateForm();
+        $scope.validateForm();
         if ($scope.isOk == true) {
             console.log($scope.model);
             $scope.warningList = [];
@@ -109,10 +110,12 @@ function AlertsCtrl($scope, $http, alertService) {
         $scope.model.cod_identificare = "";
         $scope.model.cont = "";
         $scope.model.brut = "";
+        $scope.model.sumaTotala = "";
         $scope.pdf = {
             pdfName : ""
         };
         $scope.submitted = false;
+        $scope.isOk = true;
     };
 
 
@@ -122,44 +125,54 @@ function AlertsCtrl($scope, $http, alertService) {
 
         if($scope.model.nume == "") {
             $scope.isOk = false;
+            $scope.warningList.push("Campul nume este necompletat");
         }
         if($scope.model.prenume == "") {
             $scope.isOk = false;
+            $scope.warningList.push("Campul prenume este necompletat");
         }
         if($scope.model.initialaTata == "") {
             $scope.isOk = false;
+            $scope.warningList.push("Campul initiala tata este necompletat");
         }
         if($scope.model.cnp == "") {
             $scope.isOk = false;
+            $scope.warningList.push("Campul cnp este necompletat");
         }
         if($scope.model.adresa == "") {
             $scope.isOk = false;
+            $scope.warningList.push("Campul adresa este necompletat");
         }
         if($scope.model.judet == "") {
             $scope.isOk = false;
+            $scope.warningList.push("Campul judet este necompletat");
         }
         if($scope.model.localitate == "") {
             $scope.isOk = false;
+            $scope.warningList.push("Campul localitate este necompletat");
         }
-        // if($scope.model.telefon == "") {
-        //     $scope.isOk = false;
-        // }
+        if($scope.model.telefon == "") {
+            $scope.warningList.push("Campul telefon este necompletat");
+            $scope.isOk = false;
+        }
         if($scope.model.tip_venit == "") {
+            $scope.warningList.push("Campul tip venit este necompletat");
             $scope.isOk = false;
         }
         if($scope.model.beneficiar == "") {
-            $scope.isOk = false;
-        }
-        if($scope.model.beneficiar == "") {
+            $scope.warningList.push("Campul beneficiar este necompletat");
             $scope.isOk = false;
         }
         if($scope.model.cod_identificare == "") {
+            $scope.warningList.push("Campul cod identificare fiscal este necompletat");
             $scope.isOk = false;
         }
         if($scope.model.cont == "") {
+            $scope.warningList.push("Campul cont este necompletat");
             $scope.isOk = false;
         }
         if($scope.model.brut == "") {
+            $scope.warningList.push("Campul brut este necompletat");
             $scope.isOk = false;
         }
 
@@ -176,7 +189,14 @@ function AlertsCtrl($scope, $http, alertService) {
         if($scope.model.email != "") {
             if ($scope.emailValidator($scope.model.email) == false) {
                 $scope.isOk = false;
-                $scope.warningList.push("Email-ul nu este valid!");
+                $scope.warningList.push("Email-ul nu este valid! Ex: popescu@gmail.ro");
+            }
+        }
+
+        if($scope.model.cod_identificare != "") {
+            if ($scope.cifValidator($scope.model.cod_identificare) == false) {
+                $scope.isOk = false;
+                $scope.warningList.push("Codul de identificare fiscal nu este valid! Ex: RO1234567, ro1234567, 1234567");
             }
         }
 
@@ -196,6 +216,11 @@ function AlertsCtrl($scope, $http, alertService) {
         var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return re.test(email);
     };
+
+    $scope.cifValidator =  function (cif){
+        var re =/^(RO)[0-9]{7,10}|^(ro)[0-9]{7,10}|^[0-9]{7,10}/;
+        return re.test(cif);
+    }
 
     $scope.is_valid_cnp = function is_valid_cnp(value) {
         // 0: cnp

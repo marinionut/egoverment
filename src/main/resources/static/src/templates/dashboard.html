@@ -13,7 +13,7 @@
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="nume">Nume</label>
 			<div class="col-md-3">
-				<input id="nume" ng-model="model.nume" name="nume" type="text" placeholder="" class="form-control input-md" required="">
+				<input id="nume" ng-model="model.nume" name="nume" type="text" placeholder="" class="form-control" required="">
 			</div>
 		</div>
 
@@ -21,7 +21,7 @@
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="init_tata">Initiala Tatalui</label>
 			<div class="col-md-1">
-				<input id="init_tata" ng-model="model.initialaTata" name="init_tata" type="text" maxlength="5" placeholder="" class="form-control input-md" required="">
+				<input id="init_tata" ng-model="model.initialaTata" name="init_tata" type="text" maxlength="5" placeholder="" class="form-control" required="">
 
 			</div>
 		</div>
@@ -30,7 +30,7 @@
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="prenume">Prenume</label>
 			<div class="col-md-3">
-				<input id="prenume" ng-model="model.prenume" name="prenume" type="text" placeholder="" class="form-control input-md" required="">
+				<input id="prenume" ng-model="model.prenume" name="prenume" type="text" placeholder="" class="form-control" required="">
 
 			</div>
 		</div>
@@ -39,7 +39,7 @@
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="cnp">CNP</label>
 			<div class="col-md-3">
-				<input id="cnp" ng-model="model.cnp" name="cnp" type="number" placeholder="" class="form-control input-md" required="">
+				<input id="cnp" ng-model="model.cnp" name="cnp" type="number" placeholder="" class="form-control" required="">
 
 			</div>
 		</div>
@@ -56,7 +56,7 @@
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="judet">Judet</label>
 			<div class="col-md-3">
-				<input id="judet" ng-model="model.judet" name="judet" type="text" placeholder="" class="form-control input-md" required="">
+				<input id="judet" ng-model="model.judet" name="judet" type="text" placeholder="" class="form-control" required="">
 			</div>
 		</div>
 
@@ -64,7 +64,7 @@
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="localitate">Localitate</label>
 			<div class="col-md-3">
-				<input id="localitate" ng-model="model.localitate" name="localitate" type="text" placeholder="" class="form-control input-md">
+				<input id="localitate" ng-model="model.localitate" name="localitate" type="text" placeholder="" class="form-control">
 			</div>
 		</div>
 
@@ -84,13 +84,13 @@
 			</div>
 		</div>
 
-		<!-- Text input-->
-		<div class="form-group">
-			<label class="col-md-4 control-label" for="cod_postal">Cod Postal</label>
-			<div class="col-md-2">
-				<input id="cod_postal" ng-model="model.cod_postal" name="cod_postal" type="number" placeholder="" class="form-control input-md">
-			</div>
-		</div>
+		<!--&lt;!&ndash; Text input&ndash;&gt;-->
+		<!--<div class="form-group">-->
+			<!--<label class="col-md-4 control-label" for="cod_postal">Cod Postal</label>-->
+			<!--<div class="col-md-2">-->
+				<!--<input id="cod_postal" ng-model="model.cod_postal" name="cod_postal" type="number" placeholder="" class="form-control">-->
+			<!--</div>-->
+		<!--</div>-->
 
 		<!-- Multiple Radios -->
 		<div class="form-group">
@@ -98,13 +98,13 @@
 			<div class="col-md-3">
 				<div class="radio">
 					<label for="radios-0">
-						<input type="radio" ng-model="model.tip_venit" name="radios" id="radios-0" value="0" checked="checked">
+						<input type="radio" ng-model="model.tip_venit" name="radios" id="radios-0" value="0" required = "">
 						Venituri din salarii
 					</label>
-				</div>
-				<div class="radio">
+				<!--</div>-->
+				<!--<div class="radio">-->
 					<label for="radios-1">
-						<input type="radio" ng-model="model.tip_venit" name="radios" id="radios-1" value="1">
+						<input type="radio" ng-model="model.tip_venit" name="radios" id="radios-1" value="1" required = "">
 						Venituri din pensii
 					</label>
 				</div>
@@ -115,7 +115,7 @@
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="beneficiar">Denumire beneficiar</label>
 			<div class="col-md-4">
-				<input id="beneficiar" ng-model="model.beneficiar" name="beneficiar" type="text" placeholder="" class="form-control input-md" required="">
+				<input id="beneficiar" ng-model="model.beneficiar" name="beneficiar" type="text" placeholder="" class="form-control" required="">
 			</div>
 		</div>
 
@@ -123,7 +123,7 @@
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="cod_identificare">Cod de identificare fiscala</label>
 			<div class="col-md-2">
-				<input id="cod_identificare" ng-model="model.cod_identificare" name="cod_identificare" type="number" placeholder="" class="form-control input-md" required="">
+				<input id="cod_identificare" ng-model="model.cod_identificare" name="cod_identificare" type="text" placeholder="" class="form-control" required="">
 
 			</div>
 		</div>
@@ -132,7 +132,7 @@
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="cont">Cont Bancar</label>
 			<div class="col-md-4">
-				<input id="cont" ng-model="model.cont" name="cont" type="text" placeholder="" class="form-control input-md" required="">
+				<input id="cont" ng-model="model.cont" name="cont" type="text" placeholder="" class="form-control" required="">
 
 			</div>
 		</div>
@@ -141,7 +141,7 @@
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="brut">Venit brut lunar (RON)</label>
 			<div class="col-md-2">
-				<input id="brut" ng-model="model.brut" ng-change="calculSumaDonatie()" name="brut" type="number" placeholder="" class="form-control input-md">
+				<input id="brut" ng-model="model.brut" ng-change="calculSumaDonatie()" name="brut" type="number" placeholder="" class="form-control">
 			</div>
 		</div>
 
@@ -172,9 +172,10 @@
 			</div>
 		</div>
 
-		<div class="row alerts-container" data-ng-show="warningList.length">
-			<h4 color="red">Avertizari:</h4>
-			<div class="col-xs-5" align="center">
+		<div class="row alerts-container" data-ng-show="warningList.length>0">
+			<div class="col-md-2"></div>
+			<h4 color="red" data-ng-show="warningList.length>0" class="col-md-1">Avertizari:</h4>
+			<div class="col-xs-7">
 				<uib-alert color="red" data-ng-repeat="warning in warningList" type="danger">{{warning}}</uib-alert>
 			</div>
 		</div>
