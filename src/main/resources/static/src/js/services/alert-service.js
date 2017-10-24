@@ -10,6 +10,11 @@
             'Access-Control-Allow-Methods' : 'POST, GET, PUT',
             'Accept': 'application/json'
         };
+        var headersPdf = {
+            'Access-Control-Allow-Origin' : '*',
+            'Access-Control-Allow-Methods' : 'POST, GET, PUT',
+            'Accept': 'application/pdf'
+        };
 
         var param_check = function(lat, lon, radius, since_date, until_date) {
             if (lat == undefined || lat == null ||
@@ -62,10 +67,21 @@
             });
         };
 
+        var getPdf = function (pdfName) {
+            var url = "http://localhost:8080/formular/pdfOrder?pdfName=" + pdfName;
+
+            return $http({
+                url: url,
+                method: 'GET',
+                headers: headersPdf,
+                responseType: 'arraybuffer'
+            });
+        };
 
         return {
             getLocationTwitter: getLocationTwitter,
             submitFormService: submitFormService,
+            getPdf: getPdf
         };
     };
 

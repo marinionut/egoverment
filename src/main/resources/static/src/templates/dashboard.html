@@ -156,17 +156,19 @@
 
 		<!-- Button -->
 		<div class="form-group">
-			<label class="col-md-4 control-label" for="plateste">Efectueaza plata</label>
-			<div class="col-md-4">
-				<button id="plateste" name="plateste" class="btn btn-primary" ng-click="submit()">Button</button>
+			<div class="col-md-3"></div>
+			<div class="col-md-2">
+				<button id="plateste" name="plateste"  ng-disabled="submitted" class="btn btn-primary" ng-click="submit()">Efectueaza plata</button>
+			</div>
+			<div class="col-md-2">
+				<button id="clear" name="clear" class="btn btn-primary" ng-click="clear()">Plata noua</button>
 			</div>
 		</div>
 
-		<!-- Button -->
 		<div class="form-group">
-			<label class="col-md-4 control-label" for="ordin">Descarca ordin de plata</label>
-			<div class="col-md-4">
-				<button id="ordin" name="ordin" class="btn btn-primary">Button</button>
+			<div class="col-md-3"></div>
+			<div class="col-md-2">
+				<button id="ordin" name="ordin" class="btn btn-primary" ng-show="submitted" ng-click="getPdf()"><i class="fa fa-file-pdf-o"></i> Ordin plata</button>
 			</div>
 		</div>
 

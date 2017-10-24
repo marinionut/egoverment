@@ -4,13 +4,13 @@ package ro.ionutmarin.util;
  * Created by ionut on 10/24/2017.
  */
 public class PdfKeeper {
-    public String absolutePath;
+    public String pdfName;
 
-    public String getAbsolutePath() {
-        return absolutePath;
+    public String getPdfName() {
+        return pdfName;
     }
 
-    public void setAbsolutePath(String absolutePath) {
-        this.absolutePath = absolutePath;
+    public void setPdfName(String pdfName) {
+        this.pdfName = pdfName;
     }
 }

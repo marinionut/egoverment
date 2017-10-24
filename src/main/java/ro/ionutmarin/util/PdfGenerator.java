@@ -21,6 +21,7 @@ public class PdfGenerator {
         PdfReader reader = null;
         PdfStamper stamper = null;
         String outputPdfAbsolutePath = "C:\\Users\\ionut\\Desktop\\egoverment\\pdf\\formular_" + timestamp + ".pdf";
+        String pdfName = "formular_" + timestamp + ".pdf";
         try {
             reader = new PdfReader(pdfTemplatePath);
             stamper = new PdfStamper(reader,
@@ -52,6 +53,6 @@ public class PdfGenerator {
         } catch (DocumentException e) {
             e.printStackTrace();
         }
-        return outputPdfAbsolutePath;
+        return pdfName;
     }
 }

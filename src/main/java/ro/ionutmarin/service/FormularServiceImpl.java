@@ -46,8 +46,8 @@ public class FormularServiceImpl implements FormularService {
 
         String timestamp = String.valueOf(System.currentTimeMillis());
         XmlConverter.modelToXml(formularEntity, timestamp);
-        String absolutePdfPath = PdfGenerator.manipulatePdf(formularEntity, timestamp);
+        String pdfName = PdfGenerator.manipulatePdf(formularEntity, timestamp);
 
-        return absolutePdfPath;
+        return pdfName;
     }
 }

@@ -18,12 +18,14 @@ function AlertsCtrl($scope, $http, alertService) {
         telefon : "",
         email : "",
         tip_venit : "",
+        beneficiar : "",
         cod_identificare : "",
         cont : "",
         brut : "",
         sumaTotala : ""
     };
     $scope.isOk = true;
+    $scope.submitted = false;
 
     $scope.pdfAbsolutePath = {};
 
@@ -45,6 +47,7 @@ function AlertsCtrl($scope, $http, alertService) {
             telefon : "",
             email : "",
             tip_venit : "",
+            beneficiar : "",
             cod_identificare : "",
             cont : "",
             brut : "",
@@ -52,16 +55,21 @@ function AlertsCtrl($scope, $http, alertService) {
         };
     };
 
-    $scope.pdfId = {};
+    $scope.pdf = {
+        pdfName : ""
+    };
 
     $scope.submitForm = function () {
+        $scope.pdfName = {};
+        console.log($scope.model.beneficiar);
         alertService.submitFormService($scope.model.nume, $scope.model.prenume,
             $scope.model.initialaTata, $scope.model.cnp, $scope.model.adresa,
             $scope.model.judet, $scope.model.localitate, $scope.model.telefon,
             $scope.model.email, $scope.model.tip_venit,$scope.model.beneficiar, $scope.model.cod_identificare,
             $scope.model.cont, $scope.model.brut, $scope.model.sumaTotala).success(function (data) {
-            $scope.pdfPath = data;
-            console.log($scope.pdfPath);
+            $scope.pdf = data;
+            console.log($scope.pdf);
+            console.log($scope.pdf.pdfName);
         });
     };
 
@@ -72,7 +80,39 @@ function AlertsCtrl($scope, $http, alertService) {
             console.log($scope.model);
             $scope.warningList = [];
             $scope.submitForm();
+            $scope.submitted = true;
         };
+    };
+
+    $scope.getPdf = function () {
+        console.log($scope.pdf.pdfName);
+        alertService.getPdf($scope.pdf.pdfName).success(function (data) {
+            var file = new Blob([data], {type: 'application/pdf'});
+            var fileURL = URL.createObjectURL(file);
+            console.log(fileURL);
+            window.open(fileURL);
+        });
+    };
+
+    $scope.clear = function () {
+        $scope.warningList = [];
+        $scope.model.nume = "";
+        $scope.model.prenume = "";
+        $scope.model.initialaTata = "";
+        $scope.model.cnp = "";
+        $scope.model.adresa = "";
+        $scope.model.judet = "";
+        $scope.model.localitate = "";
+        $scope.model.telefon = "";
+        $scope.model.tip_venit = "";
+        $scope.model.beneficiar = "";
+        $scope.model.cod_identificare = "";
+        $scope.model.cont = "";
+        $scope.model.brut = "";
+        $scope.pdf = {
+            pdfName : ""
+        };
+        $scope.submitted = false;
     };
 
 
@@ -105,6 +145,9 @@ function AlertsCtrl($scope, $http, alertService) {
         //     $scope.isOk = false;
         // }
         if($scope.model.tip_venit == "") {
+            $scope.isOk = false;
+        }
+        if($scope.model.beneficiar == "") {
             $scope.isOk = false;
         }
         if($scope.model.beneficiar == "") {
