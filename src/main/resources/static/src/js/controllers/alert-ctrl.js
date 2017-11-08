@@ -31,7 +31,35 @@ function AlertsCtrl($scope, $http, alertService) {
 
     $scope.calculSumaDonatie = function () {
         $scope.model.sumaTotala = ($scope.model.brut * 12 * 0.02).toFixed(2);
-    };
+    }
+
+
+
+    $scope.judete = [
+        {
+            auto:"",
+            nume:""
+        }
+    ];
+    $scope.localitatiJudet = [
+        {
+            nume: ""
+        }
+    ]
+
+    $http.get("http://roloca.coldfuse.io/judete")
+        .then(function(response) {
+            $scope.judete = response.data;
+            console.log($scope.judete);
+        });
+
+    $scope.localitatiJudetSelectat = function(auto) {
+        $http.get("http://roloca.coldfuse.io/orase/" + auto)
+            .then(function(response) {
+                $scope.localitatiJudet = response.data;
+                console.log($scope.localitatiJudet);
+            });
+    }
 
     $scope.clearResults = function () {
         $scope.isOk = true;
@@ -64,7 +92,7 @@ function AlertsCtrl($scope, $http, alertService) {
         console.log($scope.model.beneficiar);
         alertService.submitFormService($scope.model.nume, $scope.model.prenume,
             $scope.model.initialaTata, $scope.model.cnp, $scope.model.adresa,
-            $scope.model.judet, $scope.model.localitate, $scope.model.telefon,
+            $scope.model.judet.nume, $scope.model.localitate.nume, $scope.model.telefon,
             $scope.model.email, $scope.model.tip_venit,$scope.model.beneficiar, $scope.model.cod_identificare,
             $scope.model.cont, $scope.model.brut, $scope.model.sumaTotala).success(function (data) {
             $scope.pdf = data;
@@ -78,10 +106,15 @@ function AlertsCtrl($scope, $http, alertService) {
         $scope.isOk = true;
         $scope.validateForm();
         if ($scope.isOk == true) {
+            // if($scope.model.judet != "")
+            //     $scope.model.judet = $scope.model.judet.nume;
+            // if($scope.model.localitate != "")
+            //     $scope.model.localitate = $scope.model.localitate.nume;
             console.log($scope.model);
             $scope.warningList = [];
             $scope.submitForm();
             $scope.submitted = true;
+            //alert("Plata efectuata cu success!");
         };
     };
 
@@ -105,6 +138,7 @@ function AlertsCtrl($scope, $http, alertService) {
         $scope.model.judet = "";
         $scope.model.localitate = "";
         $scope.model.telefon = "";
+        $scope.model.email = "";
         $scope.model.tip_venit = "";
         $scope.model.beneficiar = "";
         $scope.model.cod_identificare = "";
@@ -123,55 +157,55 @@ function AlertsCtrl($scope, $http, alertService) {
     $scope.validateForm = function() {
         $scope.warningList = [];
 
-        if($scope.model.nume == "") {
+        if($scope.model.nume == "" || $scope.model.nume == null) {
             $scope.isOk = false;
             $scope.warningList.push("Campul nume este necompletat");
         }
-        if($scope.model.prenume == "") {
+        if($scope.model.prenume == "" || $scope.model.prenume == null) {
             $scope.isOk = false;
             $scope.warningList.push("Campul prenume este necompletat");
         }
-        if($scope.model.initialaTata == "") {
+        if($scope.model.initialaTata == "" || $scope.model.initialaTata == null) {
             $scope.isOk = false;
             $scope.warningList.push("Campul initiala tata este necompletat");
         }
-        if($scope.model.cnp == "") {
+        if($scope.model.cnp == "" || $scope.model.cnp == null) {
             $scope.isOk = false;
             $scope.warningList.push("Campul cnp este necompletat");
         }
-        if($scope.model.adresa == "") {
+        if($scope.model.adresa == "" || $scope.model.adresa == null) {
             $scope.isOk = false;
             $scope.warningList.push("Campul adresa este necompletat");
         }
-        if($scope.model.judet == "") {
+        if($scope.model.judet == ""  || $scope.model.judet == null) {
             $scope.isOk = false;
             $scope.warningList.push("Campul judet este necompletat");
         }
-        if($scope.model.localitate == "") {
+        if($scope.model.localitate == "" || $scope.model.localitate == null) {
             $scope.isOk = false;
             $scope.warningList.push("Campul localitate este necompletat");
         }
-        if($scope.model.telefon == "") {
+        if($scope.model.telefon == "" || $scope.model.telefon == null) {
             $scope.warningList.push("Campul telefon este necompletat");
             $scope.isOk = false;
         }
-        if($scope.model.tip_venit == "") {
+        if($scope.model.tip_venit == "" || $scope.model.tip_venit == null) {
             $scope.warningList.push("Campul tip venit este necompletat");
             $scope.isOk = false;
         }
-        if($scope.model.beneficiar == "") {
+        if($scope.model.beneficiar == "" || $scope.model.beneficiar == null) {
             $scope.warningList.push("Campul beneficiar este necompletat");
             $scope.isOk = false;
         }
-        if($scope.model.cod_identificare == "") {
+        if($scope.model.cod_identificare == ""  || $scope.model.cod_identificare == null) {
             $scope.warningList.push("Campul cod identificare fiscal este necompletat");
             $scope.isOk = false;
         }
-        if($scope.model.cont == "") {
+        if($scope.model.cont == ""  || $scope.model.cont == null) {
             $scope.warningList.push("Campul cont este necompletat");
             $scope.isOk = false;
         }
-        if($scope.model.brut == "") {
+        if($scope.model.brut == "" || $scope.model.brut == null) {
             $scope.warningList.push("Campul brut este necompletat");
             $scope.isOk = false;
         }

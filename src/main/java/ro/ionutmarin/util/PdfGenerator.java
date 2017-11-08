@@ -23,7 +23,12 @@ import java.util.Calendar;
 public class PdfGenerator {
 
     public static String removeDiactritics(String s) {
-        String newString = s.replace('')
+        s = s.replace('ă', 'a');
+        s = s.replace('ă', 'a');
+        s = s.replace('ț', 't');
+        s = s.replace('ș', 's');
+        s = s.replace('î', 'i');
+        return s;
     }
 
     public static String manipulatePdf(FormularEntity formularEntity, String timestamp) {
@@ -33,15 +38,6 @@ public class PdfGenerator {
         String outputPdfAbsolutePath = "C:\\Users\\ionut\\Desktop\\egoverment\\pdf\\formular_" + timestamp + ".pdf";
         String pdfName = "formular_" + timestamp + ".pdf";
 
-        BaseFont times = null;
-        try {
-            times = BaseFont.createFont(BaseFont.TIMES_ROMAN, BaseFont.CP1257, BaseFont.EMBEDDED);
-        } catch (DocumentException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Font font = new Font(times, 12, Font.BOLD);
         try {
             reader = new PdfReader(pdfTemplatePath);
             stamper = new PdfStamper(reader,
@@ -54,9 +50,8 @@ public class PdfGenerator {
             fields.setField("initialaTata", formularEntity.getInitialaTata());
             fields.setField("cnp", formularEntity.getCnp());
             fields.setField("adresa", formularEntity.getAdresa());
-            fields.setField("judet", new Paragraph(formularEntity.getJudet(), font).toString());
-
-            fields.setField("localitate", formularEntity.getLocalitate().replace(a,a));
+            fields.setField("judet", removeDiactritics(formularEntity.getJudet()));
+            fields.setField("localitate", removeDiactritics(formularEntity.getLocalitate()));
             fields.setField("telefon", formularEntity.getTelefon());
             fields.setField("beneficiar", formularEntity.getBeneficiar());
             fields.setField("codIdentificare", formularEntity.getCodIdentificare());

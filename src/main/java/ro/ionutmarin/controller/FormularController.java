@@ -41,8 +41,8 @@ public class FormularController {
                        @RequestParam(value="adresa", required=false) String adresa,
                        @RequestParam(value="judet", required=false) String judet,
                        @RequestParam(value="localitate", required=false) String localitate,
-                       @RequestParam(value="telefon", required=false) String telefon,
-                       @RequestParam(value="email", required=false) String email,
+                       @RequestParam(value="telefon", required=false, defaultValue = "-") String telefon,
+                       @RequestParam(value="email", required=false, defaultValue = "-") String email,
                        @RequestParam(value="tipVenit", required=false) Integer tipVenit,
                        @RequestParam(value="beneficiar", required=false) String beneficiar,
                        @RequestParam(value="codIdentificare", required=false) String codIdentificare,
@@ -58,8 +58,14 @@ public class FormularController {
         formular.setAdresa(adresa);
         formular.setJudet(judet);
         formular.setLocalitate(localitate);
-        formular.setTelefon(telefon);
-        formular.setEmail(email);
+        if (telefon == null || telefon == "")
+            formular.setTelefon("-");
+        else
+            formular.setTelefon(telefon);
+        if (email == null || email == "")
+            formular.setEmail("-");
+        else
+            formular.setEmail(email);
         formular.setTipVenit(tipVenit);
         formular.setBeneficiar(beneficiar);
         formular.setCodIdentificare(codIdentificare);

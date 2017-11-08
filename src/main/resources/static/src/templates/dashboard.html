@@ -55,16 +55,28 @@
 		<!-- Text input-->
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="judet">Judet</label>
+			<!--<div class="col-md-3">-->
+				<!--<input id="judet" ng-model="model.judet" name="judet" type="text" placeholder="" class="form-control" required="">-->
+			<!--</div>-->
 			<div class="col-md-3">
-				<input id="judet" ng-model="model.judet" name="judet" type="text" placeholder="" class="form-control" required="">
+				<select ng-model="model.judet"
+						ng-options="judet.nume for judet in judete"  required="" id="judet" ng-change="localitatiJudetSelectat(model.judet.auto)" class="form-control">
+					<option></option>
+				</select>
 			</div>
 		</div>
 
 		<!-- Text input-->
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="localitate">Localitate</label>
+			<!--<div class="col-md-3">-->
+				<!--<input id="localitate" ng-model="model.localitate" name="localitate" type="text" placeholder="" class="form-control">-->
+			<!--</div>-->
 			<div class="col-md-3">
-				<input id="localitate" ng-model="model.localitate" name="localitate" type="text" placeholder="" class="form-control">
+				<select ng-model="model.localitate"
+						ng-options="localitate.nume for localitate in localitatiJudet" required="" id="localitate"  class="form-control">
+					<option></option>
+				</select>
 			</div>
 		</div>
 
@@ -72,7 +84,7 @@
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="telefon">Telefon</label>
 			<div class="col-md-3">
-				<input id="telefon" ng-model="model.telefon" name="telefon" type="number" placeholder="" maxlength="24" class="form-control">
+				<input id="telefon" ng-model="model.telefon" name="telefon" type="number" placeholder="" maxlength="11" class="form-control">
 			</div>
 		</div>
 
