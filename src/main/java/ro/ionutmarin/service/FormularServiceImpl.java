@@ -12,6 +12,8 @@ import ro.ionutmarin.model.TipVenit;
 import ro.ionutmarin.util.PdfGenerator;
 import ro.ionutmarin.util.XmlConverter;
 
+import java.util.List;
+
 /**
  * Created by ionut on 10/21/2017.
  */
@@ -49,5 +51,12 @@ public class FormularServiceImpl implements FormularService {
         String pdfName = PdfGenerator.manipulatePdf(formularEntity, timestamp);
 
         return pdfName;
+    }
+
+    @Override
+    public List<FormularEntity> findAllFormular() {
+        List<FormularEntity> formularEntityList = dao.findAllFormular();
+
+        return formularEntityList;
     }
 }
