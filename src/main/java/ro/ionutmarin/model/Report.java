@@ -1,50 +1,73 @@
 package ro.ionutmarin.model;
 
+import java.util.List;
+
 /**
  * Created by ionut on 11/18/2017.
  */
 public class Report {
-    String name;
-    int mark;
-    int q1;
-    int q2;
+    String judet;
+    Integer numarBarbatiJudet= 0;
+    Integer numarFemeiJudet = 0;
+    Double medieVenitJudet = 0.0;
+    Integer numarVenitPensie = 0;
+    Integer numarVenitSalariu= 0;
+    List<Person> persons;
 
-    public Report(String name, int mark, int q1, int q2) {
-        this.name = name;
-        this.mark = mark;
-        this.q1 = q1;
-        this.q2 = q2;
+    public String getJudet() {
+        return judet;
     }
 
-    public String getName() {
-        return name;
+    public void setJudet(String judet) {
+        this.judet = judet;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public Integer getNumarBarbatiJudet() {
+        return numarBarbatiJudet;
     }
 
-    public int getMark() {
-        return mark;
+    public void setNumarBarbatiJudet(Integer numarBarbatiJudet) {
+        this.numarBarbatiJudet = numarBarbatiJudet;
     }
 
-    public void setMark(int mark) {
-        this.mark = mark;
+    public Integer getNumarFemeiJudet() {
+        return numarFemeiJudet;
     }
 
-    public int getQ1() {
-        return q1;
+    public void setNumarFemeiJudet(Integer numarFemeiJudet) {
+        this.numarFemeiJudet = numarFemeiJudet;
     }
 
-    public void setQ1(int q1) {
-        this.q1 = q1;
+    public Double getMedieVenitJudet() {
+        return medieVenitJudet;
     }
 
-    public int getQ2() {
-        return q2;
+    public void setMedieVenitJudet(Double medieVenitJudet) {
+        this.medieVenitJudet = medieVenitJudet;
     }
 
-    public void setQ2(int q2) {
-        this.q2 = q2;
+    public Integer getNumarVenitPensie() {
+        return numarVenitPensie;
+    }
+
+    public void setNumarVenitPensie(Integer numarVenitPensie) {
+        this.numarVenitPensie = numarVenitPensie;
+    }
+
+    public Integer getNumarVenitSalariu() {
+        return numarVenitSalariu;
+    }
+
+    public void setNumarVenitSalariu(Integer numarVenitSalariu) {
+        this.numarVenitSalariu = numarVenitSalariu;
+    }
+
+    public List<Person> getPersons() {
+        return persons;
+    }
+
+    public void setPersons(List<Person> persons) {
+        this.persons = persons;
     }
 }
+

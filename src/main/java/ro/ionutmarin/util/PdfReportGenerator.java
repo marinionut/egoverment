@@ -1,3 +1,4 @@
+/*
 package ro.ionutmarin.util;
 
 import net.sf.jasperreports.engine.*;
@@ -11,9 +12,11 @@ import ro.ionutmarin.model.Report;
 import java.io.*;
 import java.util.*;
 
+*/
 /**
  * Created by ionut on 11/15/2017.
- */
+ *//*
+
 public class PdfReportGenerator {
 
     private void start() {
@@ -275,3 +278,4 @@ public class PdfReportGenerator {
         main.start4ChartCombined();
     }
 }
+*/

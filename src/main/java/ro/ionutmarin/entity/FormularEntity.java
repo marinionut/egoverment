@@ -190,4 +190,26 @@ public class FormularEntity {
     public void setSumaTotala(Double sumaTotala) {
         this.sumaTotala = sumaTotala;
     }
+
+    @Override
+    public String toString() {
+        return "FormularEntity{" +
+                "id=" + id +
+                ", nume='" + nume + '\'' +
+                ", prenume='" + prenume + '\'' +
+                ", initialaTata='" + initialaTata + '\'' +
+                ", cnp='" + cnp + '\'' +
+                ", adresa='" + adresa + '\'' +
+                ", judet='" + judet + '\'' +
+                ", localitate='" + localitate + '\'' +
+                ", telefon='" + telefon + '\'' +
+                ", email='" + email + '\'' +
+                ", tipVenit=" + tipVenit +
+                ", beneficiar='" + beneficiar + '\'' +
+                ", codIdentificare='" + codIdentificare + '\'' +
+                ", cont='" + cont + '\'' +
+                ", salariuBrut=" + salariuBrut +
+                ", sumaTotala=" + sumaTotala +
+                '}';
+    }
 }
