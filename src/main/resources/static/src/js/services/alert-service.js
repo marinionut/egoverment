@@ -78,10 +78,22 @@
             });
         };
 
+        var getReportPdf = function () {
+
+            var url = "http://localhost:8080/report/pdf";
+
+            return $http({
+                url: url,
+                method: 'GET',
+                headers: headers
+            });
+        };
+
         return {
             getLocationTwitter: getLocationTwitter,
             submitFormService: submitFormService,
-            getPdf: getPdf
+            getPdf: getPdf,
+            getReportPdf: getReportPdf
         };
     };
 

@@ -34,11 +34,13 @@ public class ReportGenerator {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
         FileOutputStream fos = null;
-        String reportName = Constants.reportPath + "report_" + String.valueOf(System.currentTimeMillis()) + ".pdf";
+
+        String reportName = "report_" + String.valueOf(System.currentTimeMillis()) + ".pdf";
+        String reportPath = Constants.pdfPath + reportName;
         try {
             byte[] bytes = generateJasperReportPDF(outputStream, list);
             if (bytes.length > 1) {
-                File someFile = new File(reportName);
+                File someFile = new File(reportPath);
                 fos = new FileOutputStream(someFile);
                 fos.write(bytes);
                 fos.flush();

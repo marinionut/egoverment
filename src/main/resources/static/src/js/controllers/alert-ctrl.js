@@ -128,6 +128,22 @@ function AlertsCtrl($scope, $http, alertService) {
         });
     };
 
+    $scope.getReportPdf = function () {
+        var pdf = {};
+        alertService.getReportPdf().success(function (data) {
+            pdf = data;
+            console.log(pdf);
+            console.log(pdf.pdfName);
+
+            alertService.getPdf(pdf.pdfName).success(function (data) {
+                var file = new Blob([data], {type: 'application/pdf'});
+                var fileURL = URL.createObjectURL(file);
+                console.log(fileURL);
+                window.open(fileURL);
+            });
+        });
+    };
+
     $scope.clear = function () {
         $scope.warningList = [];
         $scope.model.nume = "";
